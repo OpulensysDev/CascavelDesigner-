@@ -321,3 +321,192 @@ const sectionObserver = new IntersectionObserver((entries) => {
 sections.forEach(section => {
     sectionObserver.observe(section);
 });
+
+//************&&&&&&&
+// Portfolio Section
+const portfolioGrid = document.getElementById('portfolioGrid');
+const expandPortfolioBtn = document.getElementById('expandPortfolio');
+let portfolioItemsShown = 8;
+
+const portfolioItems = [
+    { src: 'art1.png', alt: 'Arte 1' },
+    { src: 'art2.png', alt: 'Arte 2' },
+    { src: 'art3.png', alt: 'Arte 3' },
+    { src: 'art4.png', alt: 'Arte 4' },
+    { src: 'art5.png', alt: 'Arte 5' },
+    { src: 'art6.png', alt: 'Arte 6' },
+    { src: 'art7.png', alt: 'Arte 7' },
+    { src: 'art8.png', alt: 'Arte 8' },
+    { src: 'art9.png', alt: 'Arte 9' },
+    { src: 'art10.png', alt: 'Arte 10' },
+    { src: 'art11.png', alt: 'Arte 11' },
+    { src: 'art12.png', alt: 'Arte 12' },
+    { src: 'art13.png', alt: 'Arte 13' },
+    { src: 'art14.png', alt: 'Arte 14' },
+];
+
+function createPortfolioItem(item) {
+    const div = document.createElement('div');
+    div.className = 'relative group';
+    div.innerHTML = `
+        <img src="${item.src}" alt="${item.alt}" class="w-full h-auto rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <button class="text-white text-xl"><i class="fas fa-heart"></i></button>
+        </div>
+    `;
+    return div;
+}
+
+function loadPortfolioItems() {
+    for (let i = 0; i < portfolioItemsShown && i < portfolioItems.length; i++) {
+        portfolioGrid.appendChild(createPortfolioItem(portfolioItems[i]));
+    }
+    if (portfolioItemsShown >= portfolioItems.length) {
+        expandPortfolioBtn.style.display = 'none';
+    }
+}
+
+expandPortfolioBtn.addEventListener('click', () => {
+    portfolioItemsShown += 4;
+    portfolioGrid.innerHTML = '';
+    loadPortfolioItems();
+});
+
+loadPortfolioItems();
+
+// Design Quotes Section
+const quotesSlider = document.querySelector('#design-quotes .swiper-wrapper');
+const quotes = [
+    { text: "Design não é apenas como algo parece, design é como algo funciona.", author: "Steve Jobs" },
+    { text: "Bom design é óbvio. Ótimo design é transparente.", author: "Joe Sparano" },
+    { text: "Design é inteligência tornada visível.", author: "Alina Wheeler" },
+    // Add 46 more quotes here
+];
+
+quotes.forEach(quote => {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
+    slide.innerHTML = `
+        <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+            <p class="mb-4 text-lg italic">"${quote.text}"</p>
+            <p class="font-semibold">- ${quote.author}</p>
+        </div>
+    `;
+    quotesSlider.appendChild(slide);
+});
+
+// Testimonials Section
+const testimonialsSlider = document.querySelector('#testimonials .swiper-wrapper');
+const testimonials = [
+    { text: "A Cascavel Designer superou todas as nossas expectativas. Seu trabalho transformou completamente nossa marca.", name: "João Silva", position: "CEO, Empresa XYZ" },
+    { text: "Profissionalismo e criatividade em cada projeto. Recomendo fortemente!", name: "Maria Santos", position: "Diretora de Marketing, ABC Corp" },
+    { text: "Resultados impressionantes e atendimento excepcional. Continuaremos trabalhando juntos!", name: "Pedro Oliveira", position: "Fundador, Startup 123" },
+    // Add 97 more testimonials here
+];
+
+testimonials.forEach(testimonial => {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
+    slide.innerHTML = `
+        <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+            <p class="mb-4">"${testimonial.text}"</p>
+            <div class="flex items-center">
+                <img src="/placeholder.svg?height=48&width=48" alt="${testimonial.name}" class="w-12 h-12 rounded-full mr-4">
+                <div>
+                    <h4 class="font-semibold">${testimonial.name}</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">${testimonial.position}</p>
+                </div>
+            </div>
+        </div>
+    `;
+    testimonialsSlider.appendChild(slide);
+});
+
+// Initialize Swiper
+new Swiper('.quotes-slider', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        640: {
+            slidesPerView: 2,
+        },
+        1024: {
+            slidesPerView: 3,
+        },
+    },
+});
+
+new Swiper('.testimonials-slider', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        640: {
+            slidesPerView: 2,
+        },
+        1024: {
+            slidesPerView: 3,
+        },
+    },
+});
+
+// Stats Section
+const ctx = document.getElementById('projectsChart').getContext('2d');
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+        datasets: [{
+            label: 'Projetos Concluídos',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        },
+        responsive: true,
+        maintainAspectRatio: false
+    }
+});
+
+const satisfactionTable = document.getElementById('satisfactionTable');
+const satisfactionData = [
+    { month: 'Janeiro', satisfaction: '98%' },
+    { month: 'Fevereiro', satisfaction: '97%' },
+    { month: 'Março', satisfaction: '99%' },
+    { month: 'Abril', satisfaction: '98%' },
+    { month: 'Maio', satisfaction: '100%' },
+    { month: 'Junho', satisfaction: '99%' },
+];
+
+satisfactionData.forEach(data => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td class="py-2 px-4">${data.month}</td>
+        <td class="py-2 px-4">${data.satisfaction}</td>
+    `;
+    satisfactionTable.appendChild(row);
+});
