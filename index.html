@@ -12,8 +12,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-
-    
 </head>
 <body class="font-sans antialiased font-sans" x-data="{ darkMode: false, fontSize: 100, menuOpen: false }" :class="{ 'dark': darkMode }">
     <header class="fixed w-full z-50 transition-all duration-300" :class="{ 'bg-white text-gray-800': !darkMode, 'bg-gray-900 text-white': darkMode }">
@@ -99,12 +97,25 @@
             </div>
         </section>
 
-         <section id="testimonials" class="py-20 bg-white dark:bg-gray-800 section">
+        <section id="testimonials" class="py-20 bg-white dark:bg-gray-900 section">
             <div class="container mx-auto px-4">
                 <h2 class="text-4xl font-bold text-center mb-12 section-title" data-aos="fade-up">O que Nossos Clientes Dizem</h2>
                 <div class="swiper-container testimonials-slider" data-aos="fade-up">
                     <div class="swiper-wrapper">
-                        <!-- Testimonials will be dynamically added here -->
+                        <!-- Repita este bloco para cada testemunho (total de 100) -->
+                        <div class="swiper-slide">
+                            <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                                <p class="mb-4">"A Cascavel Designer superou todas as nossas expectativas. Seu trabalho transformou completamente nossa marca."</p>
+                                <div class="flex items-center">
+                                    <img src="/placeholder.svg?height=48&width=48" alt="Cliente 1" class="w-12 h-12 rounded-full mr-4">
+                                    <div>
+                                        <h4 class="font-semibold">João Silva</h4>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">CEO, Empresa XYZ</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Repita o bloco acima mais 99 vezes com diferentes nomes, empresas e testemunhos -->
                     </div>
                     <div class="swiper-pagination"></div>
                     <div class="swiper-button-next"></div>
@@ -135,11 +146,17 @@
             </div>
         </section>
 
-            <section id="portfolio" class="py-20 bg-white dark:bg-gray-800 section">
+        <section id="portfolio" class="py-20 bg-white dark:bg-gray-900 section">
             <div class="container mx-auto px-4">
                 <h2 class="text-4xl font-bold text-center mb-12 section-title" data-aos="fade-up">Nosso Portfólio</h2>
-                <div id="portfolioGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" data-aos="fade-up">
-                    <!-- Portfolio items will be dynamically added here -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" data-aos="fade-up">
+                    <div class="relative group">
+                        <img src="art1.png" alt="Arte 1" class="w-full h-auto rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <button class="text-white text-xl"><i class="fas fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <!-- Repeat for other portfolio items -->
                 </div>
                 <div class="text-center mt-8">
                     <button id="expandPortfolio" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors">
@@ -147,35 +164,7 @@
                     </button>
                 </div>
             </div>
-            </section>
-
-        
-        <section id="stats" class="py-20 bg-gray-100 dark:bg-gray-700 section">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-12 section-title" data-aos="fade-up">Estatísticas e Dados</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-                        <h3 class="text-2xl font-bold mb-4">Projetos Concluídos por Mês</h3>
-                        <canvas id="projectsChart"></canvas>
-                    </div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-                        <h3 class="text-2xl font-bold mb-4">Satisfação dos Clientes</h3>
-                        <table class="w-full">
-                            <thead>
-                                <tr>
-                                    <th class="py-2 px-4 bg-gray-200 dark:bg-gray-700 font-semibold text-left">Mês</th>
-                                    <th class="py-2 px-4 bg-gray-200 dark:bg-gray-700 font-semibold text-left">Satisfação</th>
-                                </tr>
-                            </thead>
-                            <tbody id="satisfactionTable">
-                                <!-- Table rows will be dynamically added here -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
         </section>
-    </main>
 
         <section id="contact" class="py-20 bg-gray-100 dark:bg-gray-800 section">
             <div class="container mx-auto px-4">
@@ -208,42 +197,45 @@
             </div>
         </section>
 
-        <section id="design-quotes" class="py-20 bg-gray-100 dark:bg-gray-700 section">
-    <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center mb-12">Inspirações de Design</h2>
-        <div class="swiper-container quotes-slider">
-            <div class="swiper-wrapper"></div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </div>
-</section>
-
-
+        <section id="design-quotes" class="py-20 bg-white dark:bg-gray-900 section">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 section-title" data-aos="fade-up">Inspirações de Design</h2>
+                <div class="swiper-container quotes-slider" data-aos="fade-up">
+                    <div class="swiper-wrapper">
+                        <!-- Repita este bloco para cada citação (total de 50) -->
+                        <div class="swiper-slide">
+                            <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                                <p class="mb-4 text-lg italic">"Design não é apenas como algo parece, design é como algo funciona."</p>
+                                <p class="font-semibold">- Steve Jobs</p>
+                            </div>
+                        </div>
+                        <!-- Repita o bloco acima mais 49 vezes com diferentes citações e autores -->
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </section>
 
         <section id="stats" class="py-20 bg-gray-100 dark:bg-gray-800 section">
-    <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center mb-12">Estatísticas e Dados</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-                <h3 class="text-2xl font-bold mb-4">Projetos Concluídos por Mês</h3>
-                <canvas id="projectsChart"></canvas>
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 section-title" data-aos="fade-up">Nosso Impacto</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold mb-2 counter" data-target="500">0</div>
+                        <p>Projetos Concluídos</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold mb-2 counter" data-target="98">0</div>
+                        <p>Clientes Satisfeitos</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold mb-2 counter" data-target="25">0</div>
+                        <p>Prêmios de Design</p>
+                    </div>
+                </div>
             </div>
-            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-                <h3 class="text-2xl font-bold mb-4">Satisfação dos Clientes</h3>
-                <table class="w-full custom-table">
-                    <thead>
-                        <tr>
-                            <th>Mês</th>
-                            <th>Satisfação</th>
-                        </tr>
-                    </thead>
-                    <tbody id="satisfactionTable"></tbody>
-                </table>
-            </div>
-        </div>
-    </div>
         </section>
 
         <section id="cta" class="py-20 bg-blue-600 text-white section">
@@ -334,4 +326,4 @@
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
     <script src="script.js"></script>
 </body>
-</html>
+                                                                                                </html>
