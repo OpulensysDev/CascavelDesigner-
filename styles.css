@@ -214,16 +214,14 @@ nav ul li a:hover {
 
 /* Testimonials Section */
 #testimonials {
-    padding: 100px 0;
     background-color: #fff;
 }
 
 .testimonial-card {
     background-color: #f9fafb;
     border-radius: 8px;
-    padding: 30px;
+    padding: 2rem;
     box-shadow: 0 4px 6px var(--shadow-color);
-    margin-bottom: 2rem;
 }
 
 .testimonial-content {
@@ -245,8 +243,7 @@ nav ul li a:hover {
 
 /* Portfolio Section */
 #portfolio {
-    padding: 100px 0;
-    background-color: #f9fafb;
+    background-color: #fff;
 }
 
 .portfolio-grid {
@@ -290,11 +287,14 @@ nav ul li a:hover {
     opacity: 1;
 }
 
-.portfolio-overlay a {
+.portfolio-overlay button {
     color: #fff;
     font-size: 1.5rem;
-    margin: 0 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
+
 
 /* Contact Section */
 #contact {
@@ -310,6 +310,21 @@ nav ul li a:hover {
 .form-group {
     margin-bottom: 1.5rem;
 }
+#design-quotes {
+    background-color: #f9fafb;
+}
+
+.quotes-slider {
+    padding-bottom: 3rem;
+}
+
+.quotes-slider .swiper-slide {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    padding: 2rem;
+}
+
 
 .form-group label {
     display: block;
@@ -1178,3 +1193,75 @@ footer {
 .ease-in-out { transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
 
 /* Add more utility classes as needed */
+#stats {
+    background-color: #f9fafb;
+}
+
+.stats-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+    background-color: #f7fafc;
+    font-weight: 600;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: #f7fafc;
+        --background-color: #1a202c;
+        --shadow-color: rgba(255, 255, 255, 0.1);
+    }
+
+    body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+    }
+
+    #portfolio, #testimonials {
+        background-color: #2d3748;
+    }
+
+    #design-quotes, #stats {
+        background-color: #1a202c;
+    }
+
+    .quotes-slider .swiper-slide,
+    .testimonial-card,
+    .stats-card {
+        background-color: #2d3748;
+    }
+
+    th {
+        background-color: #4a5568;
+    }
+
+    th, td {
+        border-bottom-color: #4a5568;
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
