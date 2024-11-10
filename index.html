@@ -208,40 +208,42 @@
             </div>
         </section>
 
-        <section id="design-quotes" class="py-20 bg-white dark:bg-gray-900 section">
+        <section id="design-quotes" class="py-20 bg-gray-100 dark:bg-gray-700 section">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12">Inspirações de Design</h2>
+        <div class="swiper-container quotes-slider">
+            <div class="swiper-wrapper"></div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
 
-                <section id="design-quotes" class="py-20 bg-gray-100 dark:bg-gray-700 section">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-12 section-title" data-aos="fade-up">Inspirações de Design</h2>
-                <div class="swiper-container quotes-slider" data-aos="fade-up">
-                    <div class="swiper-wrapper">
-                        <!-- Quotes will be dynamically added here -->
-                    </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
-            </div>
-                </section>
+
 
         <section id="stats" class="py-20 bg-gray-100 dark:bg-gray-800 section">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-12 section-title" data-aos="fade-up">Nosso Impacto</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up">
-                    <div class="text-center">
-                        <div class="text-4xl font-bold mb-2 counter" data-target="500">0</div>
-                        <p>Projetos Concluídos</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold mb-2 counter" data-target="98">0</div>
-                        <p>Clientes Satisfeitos</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold mb-2 counter" data-target="25">0</div>
-                        <p>Prêmios de Design</p>
-                    </div>
-                </div>
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12">Estatísticas e Dados</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-bold mb-4">Projetos Concluídos por Mês</h3>
+                <canvas id="projectsChart"></canvas>
             </div>
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-bold mb-4">Satisfação dos Clientes</h3>
+                <table class="w-full custom-table">
+                    <thead>
+                        <tr>
+                            <th>Mês</th>
+                            <th>Satisfação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="satisfactionTable"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
         </section>
 
         <section id="cta" class="py-20 bg-blue-600 text-white section">
