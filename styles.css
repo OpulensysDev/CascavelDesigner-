@@ -1178,3 +1178,82 @@ footer {
 .ease-in-out { transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
 
 /* Add more utility classes as needed */
+/* Estilos para a seção de gráficos de crescimento */
+#growth-charts {
+    padding: 4rem 0;
+    background-color: #f7fafc;
+    transition: background-color 0.3s ease;
+}
+
+.dark #growth-charts {
+    background-color: #2d3748;
+}
+
+#growth-charts .section-title {
+    color: #2d3748;
+    margin-bottom: 2rem;
+    font-size: 2.25rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.dark #growth-charts .section-title {
+    color: #f7fafc;
+}
+
+#growth-charts .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+#growth-charts .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+#growth-charts canvas {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 300px;
+}
+
+#growth-charts .chart-container {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark #growth-charts .chart-container {
+    background-color: #4a5568;
+}
+
+#growth-charts .chart-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    #growth-charts .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Estilos para animação de fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#growth-charts .chart-container {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+#growth-charts .chart-container:nth-child(1) { animation-delay: 0.2s; }
+#growth-charts .chart-container:nth-child(2) { animation-delay: 0.4s; }
+#growth-charts .chart-container:nth-child(3) { animation-delay: 0.6s; }
+#growth-charts .chart-container:nth-child(4) { animation-delay: 0.8s; }
