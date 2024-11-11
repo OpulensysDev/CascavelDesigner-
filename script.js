@@ -322,7 +322,102 @@ sections.forEach(section => {
     sectionObserver.observe(section);
 });
 
-//************&&&&&&&
+// Função para criar gráficos
+function createChart(ctx, type, labels, data, label, backgroundColor, borderColor) {
+    return new Chart(ctx, {
+        type: type,
+        data: {
+            labels: labels,
+            datasets: [{
+                label: label,
+                data: data,
+                backgroundColor: backgroundColor,
+                borderColor: borderColor,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            animation: {
+                duration: 2000,
+                easing: 'easeInOutQuart'
+            }
+        }
+    });
+}
 
-                
-// Citações Dinâmicas com 50 citações
+// Dados para os gráficos
+const years = ['2019', '2020', '2021', '2022', '2023'];
+const revenueData = [50000, 75000, 100000, 150000, 200000];
+const clientsData = [10, 25, 40, 60, 100];
+const projectsData = [20, 40, 70, 100, 150];
+const satisfactionData = [85, 88, 90, 92, 95];
+
+// Criação dos gráficos quando a seção estiver visível
+const chartsSection = document.getElementById('growth-charts');
+let chartsCreated = false;
+
+const chartObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !chartsCreated) {
+            // Gráfico de Receita
+            createChart(
+                document.getElementById('revenueChart').getContext('2d'),
+                'line',
+                years,
+                revenueData,
+                'Receita Anual (R$)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(75, 192, 192, 1)'
+            );
+
+            // Gráfico de Clientes
+            createChart(
+                document.getElementById('clientsChart').getContext('2d'),
+                'bar',
+                years,
+                clientsData,
+                'Número de Clientes',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(54, 162, 235, 1)'
+            );
+
+            // Gráfico de Projetos
+            createChart(
+                document.getElementById('projectsChart').getContext('2d'),
+                'bar',
+                years,
+                projectsData,
+                'Projetos Concluídos',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(255, 206, 86, 1)'
+            );
+
+            // Gráfico de Satisfação
+            createChart(
+                document.getElementById('satisfactionChart').getContext('2d'),
+                'line',
+                years,
+                satisfactionData,
+                'Satisfação do Cliente (%)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 99, 132, 1)'
+            );
+
+            chartsCreated = true;
+            chartObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+chartObserver.observe(chartsSection);
+
+// Atualização dos gráficos no modo escuro
+function updateChartsTheme(darkMode) {
+    Chart.defaults.color = darkMode ? '#fff' : '#666';
+    Chart.defaults.scale.grid.color = darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0,
